@@ -1,2 +1,2 @@
 # webCoRe
-webCoRe integration
+Smartthings integration
