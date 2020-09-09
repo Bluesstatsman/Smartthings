@@ -1,7 +1,6 @@
-/**
+**
  *  Hue Motion Sensor
  *
- *  Copyright 2018 Bogdan Alexe
  *
  *  Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  *  in compliance with the License. You may obtain a copy of the License at:
@@ -17,7 +16,7 @@
 import physicalgraph.zigbee.zcl.DataType
  
 metadata {
-    definition (name: "Hue Motion Sensor", namespace: "Bluesstatsman", author: "Michael Haskin", , mnmn: "SmartThings-Integration", vid: "generic-motion", ocfDeviceType: "oic.r.sensor.motion") {
+definition (name: "Hue Motion Sensor", namespace: "Bluesstatsman", author: "Michael Haskin", , mnmn: "SmartThings-Integration", vid: "generic-motion-3", ocfDeviceType: "x.com.st.d.sensor.motion") {
 		capability "Motion Sensor"
 		capability "Configuration"
 		capability "Battery"
@@ -78,11 +77,12 @@ metadata {
         valueTile("battery", "device.battery", inactiveLabel: false, width: 2, height: 2, decoration: "flat") {
 			state "battery", label: '${currentValue}% battery', unit: ""
 		}
-        
         standardTile("refresh", "device.refresh", inactiveLabel: false, decoration: "flat", width: 2, height: 2) {
             state "default", label:"refresh", action:"refresh.refresh", icon:"st.secondary.refresh"
-
-		}
+        }
+        standardTile("configure", "device.configure", inactiveLabel: false, decoration: "flat", width: 2, height: 2) {
+            state "default", label:"configure", action:"configure"
+        }
 
 		main("motion")
         details(["motion", "temperature", "illuminance", "battery", "refresh"])
@@ -345,3 +345,4 @@ def updated () {
     state.lastTempOffset = tempOffset
     state.lastLuxOffset = luxOffset
 }
+
